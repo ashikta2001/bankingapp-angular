@@ -14,7 +14,9 @@
                     <!-- <input (change)="acnoChange($event)" type="text" class="form-control" id="acno" aria-describedby="emailHelp"> -->
                     <!-- template referencing -->
                     <!-- <input #acno type="text" class="form-control" id="acno" aria-describedby="emailHelp"> -->
-                    <!-- ngModel -->
+                    <!-- two way binding without ngModel -->
+                    <!-- <input (change)="acnoChange($event)"  [value]="acno" name="acno" type="text" class="form-control" id="acno" aria-describedby="emailHelp"> -->
+                    <!-- ngModel two way binding -->
                     <input [(ngModel)]="acno" name="acno" type="text" class="form-control" id="acno" aria-describedby="emailHelp">
                     <small id="emailHelp" class="form-text text-muted">We'll never share your Account number with anyone else.</small>
                     </div>
