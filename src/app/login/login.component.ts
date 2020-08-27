@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   }
 
   // not required for template referencing
-  acno = "";
+  acno = "123456";
   pwd = "";
 
   constructor() { }
