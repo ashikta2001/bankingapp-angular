@@ -10,14 +10,27 @@
                 <form>
                     <div class="form-group">
                     <label for="acno">Account Number</label>
-                    <input (change)="acnoChange($event)" type="text" class="form-control" id="acno" aria-describedby="emailHelp">
+                    <!-- with change event binding -->
+                    <!-- <input (change)="acnoChange($event)" type="text" class="form-control" id="acno" aria-describedby="emailHelp"> -->
+                    <!-- template referencing -->
+                    <!-- <input #acno type="text" class="form-control" id="acno" aria-describedby="emailHelp"> -->
+                    <!-- ngModel -->
+                    <input [(ngModel)]="acno" name="acno" type="text" class="form-control" id="acno" aria-describedby="emailHelp">
                     <small id="emailHelp" class="form-text text-muted">We'll never share your Account number with anyone else.</small>
                     </div>
                     <div class="form-group">
                     <label for="pwd">Password</label>
-                    <input (change)="pwdChange($event)" type="password" class="form-control" id="pwd">
-                    </div>
-                    <button type="button" class="btn btn-primary" (click)="login()">Login</button>
+                    <!-- with change event -->
+                    <!-- <input (change)="pwdChange($event)" type="password" class="form-control" id="pwd"> -->
+                    <!-- template referencing -->
+                    <!-- <input #pwd type="password" class="form-control" id="pwd"> -->
+                    <!-- ngModel -->
+                    <input [(ngModel)]="pwd" name="pwd" type="password" class="form-control" id="pwd">
+                </div>
+                    <!-- change event binding -->
+                    <!-- <button type="button" class="btn btn-primary" (click)="login()">Login</button> -->
+                    <!-- template referencing -->
+                    <button type="button" class="btn btn-primary" (click)="login(acno, pwd)">Login</button>
                 </form>        
             </div>
         </div>

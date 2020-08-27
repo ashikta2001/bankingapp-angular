@@ -15,29 +15,37 @@ export class LoginComponent implements OnInit {
     1005:{name:"user5", acno:1005, pin:5678, password:'userfive', balance:5000},
   }
 
+  // not required for template referencing
   acno = "";
-  password = "";
+  pwd = "";
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  acnoChange(event){
-    // alert("acnoChange event");
-    console.log(event.target.value);
-    this.acno = event.target.value;
-  }
+  // with change event binding 
 
-  pwdChange(event){
-    // alert("pwdChange event");
-    console.log(event.target.value);
-    this.password = event.target.value;
-  }
+  // acnoChange(event){
+  //   // alert("acnoChange event");
+  //   console.log(event.target.value);
+  //   this.acno = event.target.value;
+  // }
 
+  // pwdChange(event){
+  //   // alert("pwdChange event");
+  //   console.log(event.target.value);
+  //   this.password = event.target.value;
+  // }
+
+  // with template referencing
+  // login(acno1, pwd1){
   login(){
+          // with template referencing
+          // var acno=parseInt(acno1.value);
+          // var password=pwd1.value
           var acno=parseInt(this.acno);
-          var password=this.password
+          var password=this.pwd
           // alert(acno+","+password)
           try {
               if(isNaN(acno)) throw "Invalid Account Number"
