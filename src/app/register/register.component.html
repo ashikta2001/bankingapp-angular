@@ -9,9 +9,6 @@
             <div class="col">
                 <form (ngSubmit)="register()">
                     <!-- string interpolation to show data from ts module into html -->
-                    {{ acname }}
-                    {{ acno }}
-                    {{ pwd }}
                     <div class="form-group">
                     <label for="acname">Account Holder Name</label>
                     <input [(ngModel)]="acname" name="acname" type="text" class="form-control" id="acname">
@@ -21,6 +18,10 @@
                     <input [(ngModel)]="acno" name="acno" type="text" class="form-control" id="acno" aria-describedby="emailHelp">
                     <small id="emailHelp" class="form-text text-muted">We'll never share your Account number with anyone else.</small>
                     </div>
+                    <div class="form-group">
+                    <label for="acpin">PIN Number</label>
+                    <input [(ngModel)]="acpin" name="acpin" type="text" class="form-control" id="acpin">
+                    </div>                    
                     <div class="form-group">
                     <label for="pwd">Password</label>
                     <input [(ngModel)]="pwd" name="pwd" type="password" class="form-control" id="pwd">

@@ -5,23 +5,17 @@
             <div class="col" >
                 <h2>Cash Deposit</h2>
                 <table>
-                    dpacno = "";
-                    dppin = "";
-                    dpamt = "";
-                    wacno = "";
-                    wpin =  "";
-                    wamt =  "";                    
                     <tr>
                         <td>Account Number</td>
                         <td><input [(ngModel)]="dpacno" name="dpacno" type="text" id="acno"></td>
                     </tr>
                     <tr>
                         <td>Pin</td>
-                        <td><input [(ngModel)]="dpacno" name="dpacno" type="text" id="pin"></td>
+                        <td><input [(ngModel)]="dppin" name="dppin" type="text" id="pin"></td>
                     </tr>
                     <tr>
                         <td>Amount</td>
-                        <td><input type="text" name="" id="amt"></td>
+                        <td><input [(ngModel)]="dpamt" name="dpamt" type="text" id="amt"></td>
                     </tr>
                     <tr>
                         <td colspan="2"> <button type="button"  onclick="Bank.deposit()">Deposit</button></td>
@@ -34,15 +28,15 @@
                 <table>
                     <tr>
                         <td>Account No:</td>
-                        <td><input type="text" name="" id="wacno"></td>
+                        <td><input [(ngModel)]="wacno" name="wacno" type="text" id="wacno"></td>
                     </tr>
                     <tr>
                         <td>Pin</td>
-                        <td><input type="text" name="" id="wpin"></td>
+                        <td><input [(ngModel)]="wpin" name="wpin" type="text" id="wpin"></td>
                     </tr>
                     <tr>
                         <td>Amount</td>
-                        <td><input type="text" name="" id="wamt"></td>
+                        <td><input [(ngModel)]="wamt" name="wamt" type="text" id="wamt"></td>
                     </tr>
                     <tr>
                         <td colspan="2"> <button type="button" onclick="Bank.withdraw()">Withdraw</button></td>
