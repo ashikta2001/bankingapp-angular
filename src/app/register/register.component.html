@@ -1,15 +1,17 @@
-<p>register works!</p>
 <div class="container">
     <div class="jumbotron">
         <div class="row"> 
             <div class="col"></div>
-            <div class="col">Registration Page</div>
+            <div class="col">Account Registration</div>
             <div class="col"></div>
         </div>
         <div class="row">
             <div class="col">
-                <form>
+                <form (ngSubmit)="register()">
                     <!-- string interpolation to show data from ts module into html -->
+                    {{ acname }}
+                    {{ acno }}
+                    {{ pwd }}
                     <div class="form-group">
                     <label for="acname">Account Holder Name</label>
                     <input [(ngModel)]="acname" name="acname" type="text" class="form-control" id="acname">
@@ -23,7 +25,7 @@
                     <label for="pwd">Password</label>
                     <input [(ngModel)]="pwd" name="pwd" type="password" class="form-control" id="pwd">
                     </div>
-                    <button type="button" class="btn btn-primary" (click)="register()">Register</button>
+                    <button type="submit" class="btn btn-primary">Register</button>
                     <a routerLink="" >Back to Login Page</a>
                 </form>        
             </div>
