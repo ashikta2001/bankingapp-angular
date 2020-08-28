@@ -5,13 +5,19 @@
             <div class="col" >
                 <h2>Cash Deposit</h2>
                 <table>
+                    dpacno = "";
+                    dppin = "";
+                    dpamt = "";
+                    wacno = "";
+                    wpin =  "";
+                    wamt =  "";                    
                     <tr>
                         <td>Account Number</td>
-                        <td><input type="text" name="" id="acno"></td>
+                        <td><input [(ngModel)]="dpacno" name="dpacno" type="text" id="acno"></td>
                     </tr>
                     <tr>
                         <td>Pin</td>
-                        <td><input type="text" name="" id="pin"></td>
+                        <td><input [(ngModel)]="dpacno" name="dpacno" type="text" id="pin"></td>
                     </tr>
                     <tr>
                         <td>Amount</td>
