@@ -12,19 +12,23 @@
                     <div class="form-group">
                     <label for="acname">Account Holder Name</label>
                     <input formControlName="acname" name="acname" type="text" class="form-control" id="acname">
+                    <div *ngIf="getError('acname')" class="error">Name is Invalid</div>
                     </div>
                     <div class="form-group">
                     <label for="acno">Account Number</label>
                     <input formControlName="acno" name="acno" type="text" class="form-control" id="acno" aria-describedby="emailHelp">
                     <small id="emailHelp" class="form-text text-muted">We'll never share your Account number with anyone else.</small>
+                    <div *ngIf="getError('acno')" class="error">Account Number is Invalid</div>
                     </div>
                     <div class="form-group">
                     <label for="acpin">PIN Number</label>
                     <input formControlName="acpin" name="acpin" type="text" class="form-control" id="acpin">
+                    <div *ngIf="getError('acpin')" class="error">Pin is Invalid</div>
                     </div>                    
                     <div class="form-group">
                     <label for="pwd">Password</label>
                     <input formControlName="pwd" name="pwd" type="password" class="form-control" id="pwd">
+                    <div *ngIf="getError('pwd')" class="error">Password is Invalid</div>
                     </div>
                     <button type="submit" class="btn btn-primary">Register</button>
                     <a routerLink="" >Back to Login Page</a>

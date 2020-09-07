@@ -25,10 +25,15 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  getError(errfield){
+    return this.registerForm.get(errfield).errors
+  }
+
+
   register(){
     if (this.registerForm.valid) {
       const result=this.dataService.register(this.registerForm.value.acname, this.registerForm.value.acno, this.registerForm.value.acpin, this.registerForm.value.pwd);
-      alert(result)
+      // alert(result)
       if (result){
         alert("Successfully created account, Please login!!!");
         this.router.navigateByUrl("");
