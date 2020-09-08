@@ -30,4 +30,24 @@ export class DataService {
     console.log("after",this.accountDetails)
     return true;
   }
+
+  login(acno1, pwd){
+    var acno = parseInt(acno1)
+    var data=this.accountDetails;
+
+    if (acno in data){
+        var password = data[acno].password
+        if (pwd==password){
+            return true
+        }
+        else{
+            return false
+        }
+    }
+    else{
+        alert("Account No does not exists")
+        return false
+    }
+  }
+
 }

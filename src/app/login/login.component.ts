@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
   // not required for template referencing
 
   constructor(private router:Router, 
-    private dataservice:DataService,
+    private dataService:DataService,
     private fb:FormBuilder) { }
 
   getError(errfield){
@@ -47,36 +47,20 @@ export class LoginComponent implements OnInit {
   // }
 
   // with template referencing
-  // login(acno1, pwd1){
   login(){
-          // with template referencing
-          // var acno=parseInt(acno1.value);
-          // var password=pwd1.value
-          var acno=parseInt(this.loginForm.value.acno);
-          var password=this.loginForm.value.pwd
-          // alert(acno+","+password)
-          try {
-              if(isNaN(acno)) throw "Invalid Account Number"
-              if(acno.toString().length<2) throw "Account number must be atleast 4 characters"
-          } catch (error) {
-              alert(error)
-          }
-
-          var data=this.dataservice.accountDetails;
-
-          if (acno in data){
-              var pwd = data[acno].password
-              if (pwd==password){
-                  alert('Login Successful')
-                  this.router.navigateByUrl("dashboard")
-              }
-              else{
-                  alert('Incorrect password')
-              }
-          }
-          else{
-              alert("Account No does not exists")
-          }
-
+    if (this.loginForm.valid) {
+      const result=this.dataService.login(this.loginForm.value.acno, this.loginForm.value.pwd);
+      // alert(result)
+      if (result){
+        alert("Login Successfull!!!");
+        this.router.navigateByUrl("dashboard")
+      }
+      else{
+        alert("Invalid Credentials. Please try again!!!")
+      }          
+    }
+    else{
+      alert("Form is  Invalid!!")
+    }          
   }
 }
