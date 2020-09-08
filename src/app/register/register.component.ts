@@ -26,7 +26,7 @@ export class RegisterComponent implements OnInit {
   }
 
   getError(errfield){
-    return this.registerForm.get(errfield).errors
+    return (this.registerForm.get(errfield).dirty || this.registerForm.get(errfield).touched) && this.registerForm.get(errfield).errors
   }
 
 

@@ -7,7 +7,7 @@
         </div>
         <div class="row">
             <div class="col">
-                <form>
+                <form [formGroup]='loginForm'>
                     <!-- string interpolation to show data from ts module into html -->
                     {{ acno }}
                     <div class="form-group">
@@ -19,8 +19,9 @@
                     <!-- two way binding without ngModel -->
                     <!-- <input (change)="acnoChange($event)"  [value]="acno" name="acno" type="text" class="form-control" id="acno" aria-describedby="emailHelp"> -->
                     <!-- ngModel two way binding -->
-                    <input [(ngModel)]="acno" name="acno" type="text" class="form-control" id="acno" aria-describedby="emailHelp">
+                    <input  formControlName="acno" name="acno" type="text" class="form-control" id="acno" aria-describedby="emailHelp">
                     <small id="emailHelp" class="form-text text-muted">We'll never share your Account number with anyone else.</small>
+                    <div *ngIf="getError('acno')" class="error">Account No is Invalid</div>
                     </div>
                     <div class="form-group">
                     <label for="pwd">Password</label>
@@ -29,7 +30,8 @@
                     <!-- template referencing -->
                     <!-- <input #pwd type="password" class="form-control" id="pwd"> -->
                     <!-- ngModel -->
-                    <input [(ngModel)]="pwd" name="pwd" type="password" class="form-control" id="pwd">
+                    <input formControlName="pwd" name="pwd" type="password" class="form-control" id="pwd">
+                    <div *ngIf="getError('pwd')" class="error">Password is Invalid</div>
                 </div>
                     <!-- change event binding -->
                     <!-- <button type="button" class="btn btn-primary" (click)="login()">Login</button> -->

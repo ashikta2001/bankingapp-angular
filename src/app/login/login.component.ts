@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { DataService } from '../services/data.service';
+import { FormBuilder, Validators } from '@angular/forms';
+
 
 @Component({
   selector: 'app-login',
@@ -9,13 +11,24 @@ import { DataService } from '../services/data.service';
 })
 export class LoginComponent implements OnInit {
  
+  loginForm = this.fb.group(
+    {
+      acno:['', [Validators.required, Validators.minLength(4)]],
+      pwd:['', [Validators.required]],
+    }
+  )
+
   // not required for template referencing
-  acno = "";
-  pwd = "";
 
   constructor(private router:Router, 
-    private dataservice:DataService) { }
+    private dataservice:DataService,
+    private fb:FormBuilder) { }
 
+  getError(errfield){
+     return (this.loginForm.get(errfield).dirty || this.loginForm.get(errfield).touched) && this.loginForm.get(errfield).errors
+  }
+
+    
   ngOnInit(): void {
   }
 
@@ -39,8 +52,8 @@ export class LoginComponent implements OnInit {
           // with template referencing
           // var acno=parseInt(acno1.value);
           // var password=pwd1.value
-          var acno=parseInt(this.acno);
-          var password=this.pwd
+          var acno=parseInt(this.loginForm.value.acno);
+          var password=this.loginForm.value.pwd
           // alert(acno+","+password)
           try {
               if(isNaN(acno)) throw "Invalid Account Number"
