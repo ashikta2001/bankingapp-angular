@@ -15,6 +15,8 @@ export class DataService {
 
   constructor() { }
 
+  currentuser;
+
   register(name, acno, acpin, pwd){
     if(acno in this.accountDetails){
       alert("Account already exists, Please login!!!")
@@ -38,7 +40,8 @@ export class DataService {
     if (acno in data){
         var password = data[acno].password
         if (pwd==password){
-            return true
+          this.currentuser=data[acno]  
+          return true
         }
         else{
             return false

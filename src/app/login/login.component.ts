@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
  
   loginForm = this.fb.group(
     {
-      acno:['', [Validators.required, Validators.minLength(4)]],
+      acno:['', [Validators.required, Validators.minLength(4), Validators.pattern("^[0-9]*$")]],
       pwd:['', [Validators.required]],
     }
   )
