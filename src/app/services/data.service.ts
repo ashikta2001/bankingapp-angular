@@ -79,10 +79,15 @@ export class DataService {
     if (wacno in data){
         var mpin = data[wacno].pin
         if (wpin==mpin){
-            data[wacno].balance-= wamt
-            // alert('account has been debited')
-            // alert(data[wacno].balance)
-            return data[wacno].balance
+            if (data[wacno].balance < wamt){
+              return "Insufficient Balance"
+            }
+            else{
+              data[wacno].balance-= wamt
+              // alert('account has been debited')
+              // alert(data[wacno].balance)
+              return data[wacno].balance
+            }
         }
     }
     else{

@@ -9,14 +9,17 @@
                         <tr>
                             <td>Account Number</td>
                             <td><input formControlName="dpacno" name="dpacno" type="text" id="acno"></td>
+                            <div *ngIf="getErrordep('dpacno')" class="error">Invalid Account No</div>
                         </tr>
                         <tr>
                             <td>Pin</td>
-                            <td><input formControlName="dppin" name="dppin" type="text" id="pin"></td>
+                            <td><input formControlName="dppin" name="dppin" type="password" id="pin"></td>
+                            <div *ngIf="getErrordep('dppin')" class="error">Invalid Pin No</div>
                         </tr>
                         <tr>
                             <td>Amount</td>
                             <td><input formControlName="dpamt" name="dpamt" type="text" id="amt"></td>
+                            <div *ngIf="getErrordep('dpamt')" class="error">Invalid Amount</div>
                         </tr>
                         <tr>
                             <td colspan="2"> <button type="submit" >Deposit</button></td>
@@ -32,14 +35,17 @@
                         <tr>
                             <td>Account No:</td>
                             <td><input formControlName="wacno" name="wacno" type="text" id="wacno"></td>
+                            <div *ngIf="getErrorwid('wacno')" class="error">Invalid Account No</div>
                         </tr>
                         <tr>
                             <td>Pin</td>
-                            <td><input formControlName="wpin" name="wpin" type="text" id="wpin"></td>
+                            <td><input formControlName="wpin" name="wpin" type="password" id="wpin"></td>
+                            <div *ngIf="getErrorwid('wpin')" class="error">Invalid Pin No</div>
                         </tr>
                         <tr>
                             <td>Amount</td>
                             <td><input formControlName="wamt" name="wamt" type="text" id="wamt"></td>
+                            <div *ngIf="getErrorwid('wamt')" class="error">Invalid Amount</div>
                         </tr>
                         <tr>
                             <td colspan="2"> <button type="submit" >Withdraw</button></td>

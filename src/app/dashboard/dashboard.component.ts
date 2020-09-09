@@ -48,6 +48,9 @@ export class DashboardComponent implements OnInit {
       if (result != false){
         alert('Account has been Credited and Current balance is '+ result)
       }
+      else{
+        alert("Incorrect Account Details")
+      }
     }
     else{
       alert("Incorrect Account Details")
@@ -60,6 +63,9 @@ export class DashboardComponent implements OnInit {
       // alert(result)
       if (result != false){
         alert('Account has been Debited and Current balance is '+ result)
+      }
+      else{
+        alert("Incorrect Account Details")
       }
     }
     else{
