@@ -4,44 +4,48 @@
         <div class="row">
             <div class="col" >
                 <h2>Cash Deposit</h2>
-                <table>
-                    <tr>
-                        <td>Account Number</td>
-                        <td><input [(ngModel)]="dpacno" name="dpacno" type="text" id="acno"></td>
-                    </tr>
-                    <tr>
-                        <td>Pin</td>
-                        <td><input [(ngModel)]="dppin" name="dppin" type="text" id="pin"></td>
-                    </tr>
-                    <tr>
-                        <td>Amount</td>
-                        <td><input [(ngModel)]="dpamt" name="dpamt" type="text" id="amt"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"> <button type="button"  onclick="Bank.deposit()">Deposit</button></td>
-                    </tr>
-                </table>
+                <form [formGroup]="depositForm" (ngSubmit)="deposit()">
+                    <table>
+                        <tr>
+                            <td>Account Number</td>
+                            <td><input formControlName="dpacno" name="dpacno" type="text" id="acno"></td>
+                        </tr>
+                        <tr>
+                            <td>Pin</td>
+                            <td><input formControlName="dppin" name="dppin" type="text" id="pin"></td>
+                        </tr>
+                        <tr>
+                            <td>Amount</td>
+                            <td><input formControlName="dpamt" name="dpamt" type="text" id="amt"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"> <button type="submit" >Deposit</button></td>
+                        </tr>
+                    </table>
+                </form>
             </div>
 
             <div class="col" >
                 <h2>Cash Withdrawal</h2>
-                <table>
-                    <tr>
-                        <td>Account No:</td>
-                        <td><input [(ngModel)]="wacno" name="wacno" type="text" id="wacno"></td>
-                    </tr>
-                    <tr>
-                        <td>Pin</td>
-                        <td><input [(ngModel)]="wpin" name="wpin" type="text" id="wpin"></td>
-                    </tr>
-                    <tr>
-                        <td>Amount</td>
-                        <td><input [(ngModel)]="wamt" name="wamt" type="text" id="wamt"></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"> <button type="button" onclick="Bank.withdraw()">Withdraw</button></td>
-                    </tr>
-                </table>
+                <form [formGroup]="withdrawForm" (ngSubmit)="withdraw()">
+                    <table>
+                        <tr>
+                            <td>Account No:</td>
+                            <td><input formControlName="wacno" name="wacno" type="text" id="wacno"></td>
+                        </tr>
+                        <tr>
+                            <td>Pin</td>
+                            <td><input formControlName="wpin" name="wpin" type="text" id="wpin"></td>
+                        </tr>
+                        <tr>
+                            <td>Amount</td>
+                            <td><input formControlName="wamt" name="wamt" type="text" id="wamt"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2"> <button type="submit" >Withdraw</button></td>
+                        </tr>
+                    </table>
+                </form>
             </div>
 
         </div>

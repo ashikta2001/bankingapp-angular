@@ -53,4 +53,44 @@ export class DataService {
     }
   }
 
+  deposit(dpacno, dppin, dpamt1){
+    var dpamt=parseInt(dpamt1)
+    var data=this.accountDetails;
+    
+    if (dpacno in data){
+        var mpin = data[dpacno].pin
+        if (dppin==mpin){
+            data[dpacno].balance+= dpamt
+            // alert('account has been credited')
+            // alert(data[dpacno].balance)
+            return data[dpacno].balance
+        }
+    }
+    else{
+        return false
+    }        
+
+  }
+
+  withdraw(wacno, wpin, wamt1){
+    var wamt= parseInt(wamt1)
+    var data= this.accountDetails;
+    
+    if (wacno in data){
+        var mpin = data[wacno].pin
+        if (wpin==mpin){
+            data[wacno].balance-= wamt
+            // alert('account has been debited')
+            // alert(data[wacno].balance)
+            return data[wacno].balance
+        }
+    }
+    else{
+        // alert("Incorrect Account Details")
+        return false
+    }        
+
+  }  
+
+
 }
