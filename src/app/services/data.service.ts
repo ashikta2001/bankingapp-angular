@@ -48,7 +48,8 @@ export class DataService {
       password:pwd,
       balance:0
     }
-    console.log("after",this.accountDetails)
+    this.saveDetails();
+    // console.log("after",this.accountDetails)
     return true;
   }
 
@@ -114,7 +115,8 @@ export class DataService {
             if (data[wacno].balance < wamt){
               return {
                 status :false,
-                message : "Insufficient Balance"
+                message : "Insufficient Balance, available balance is ",
+                balance : data[wacno].balance
               }
             }
             else{

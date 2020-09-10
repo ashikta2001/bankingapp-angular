@@ -67,7 +67,7 @@ export class DashboardComponent implements OnInit {
         alert(result.message + result.balance)
       }
       else{
-        alert(result.message)
+        alert(result.message + result.balance)
       }
     }
     else{
