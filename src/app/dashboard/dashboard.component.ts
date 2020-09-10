@@ -43,13 +43,15 @@ export class DashboardComponent implements OnInit {
 
   deposit(){
     if (this.depositForm.valid) {
-      const result=this.dataService.deposit(this.depositForm.value.dpacno, this.depositForm.value.dppin, this.depositForm.value.dpamt);
+      const result=this.dataService.deposit(this.depositForm.value.dpacno, 
+        this.depositForm.value.dppin, 
+        this.depositForm.value.dpamt);
       // alert(result)
-      if (result != false){
-        alert('Account has been Credited and Current balance is '+ result)
+      if (result.status == true){
+        alert(result.message + result.balance)
       }
       else{
-        alert("Incorrect Account Details")
+        alert(result.message)
       }
     }
     else{
@@ -61,11 +63,11 @@ export class DashboardComponent implements OnInit {
     if (this.withdrawForm.valid) {
       const result=this.dataService.withdraw(this.withdrawForm.value.wacno, this.withdrawForm.value.wpin, this.withdrawForm.value.wamt);
       // alert(result)
-      if (result != false){
-        alert('Account has been Debited and Current balance is '+ result)
+      if (result.status == true){
+        alert(result.message + result.balance)
       }
       else{
-        alert("Incorrect Account Details")
+        alert(result.message)
       }
     }
     else{

@@ -13,9 +13,28 @@ export class DataService {
     1005:{name:"user5", acno:1005, pin:5678, password:'userfive', balance:5000},
   }
 
-  constructor() { }
+  constructor() { 
+    this.getDetails();
+  }
 
-  currentuser;
+  currentUser;
+
+  saveDetails(){
+    localStorage.setItem("accountDetails",JSON.stringify(this.accountDetails));
+
+    if (this.currentUser){
+      localStorage.setItem("currentUser", JSON.stringify(this.currentUser));
+    }
+  }
+
+  getDetails(){
+    if (localStorage.getItem("accountDetails")){
+      this.accountDetails= JSON.parse(localStorage.getItem("accountDetails"));
+    }
+    if (localStorage.getItem("currentUser")){
+      this.currentUser=JSON.parse(localStorage.getItem("currentUser"))
+    }
+  }
 
   register(name, acno, acpin, pwd){
     if(acno in this.accountDetails){
@@ -40,7 +59,8 @@ export class DataService {
     if (acno in data){
         var password = data[acno].password
         if (pwd==password){
-          this.currentuser=data[acno]  
+          this.currentUser=data[acno]  
+          this.saveDetails();
           return true
         }
         else{
@@ -63,12 +83,24 @@ export class DataService {
             data[dpacno].balance+= dpamt
             // alert('account has been credited')
             // alert(data[dpacno].balance)
-            return data[dpacno].balance
+            // return data[dpacno].balance
+            this.saveDetails();
+            return{
+              status:true,
+              message:'Account has been credited and Current balance is ',
+              balance:data[dpacno].balance
+            }
         }
     }
     else{
-        return false
-    }        
+        // return false
+        return{
+          status:false,
+          message:'Incorrect Account Details',
+          balance:data[dpacno].balance
+        }
+
+      }        
 
   }
 
@@ -80,19 +112,31 @@ export class DataService {
         var mpin = data[wacno].pin
         if (wpin==mpin){
             if (data[wacno].balance < wamt){
-              return "Insufficient Balance"
+              return {
+                status :false,
+                message : "Insufficient Balance"
+              }
             }
             else{
               data[wacno].balance-= wamt
+              this.saveDetails();
               // alert('account has been debited')
               // alert(data[wacno].balance)
-              return data[wacno].balance
+              // return data[wacno].balance
+              return{
+                status:true,
+                message:'Account has been Debited and Current balance is ',
+                balance:data[wacno].balance
+              }
             }
         }
     }
     else{
         // alert("Incorrect Account Details")
-        return false
+        return {
+          status : false,
+          message :'Incorrect Account Details'
+        }
     }        
 
   }  
