@@ -11,13 +11,9 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>Deposit</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>Withdrawal</td>
+                        <tr *ngFor="let transaction of transactions">
+                            <td>{{transaction.amount}}</td>
+                            <td>{{transaction.type}}</td>
                         </tr>
                     </tbody>
                 </table>

@@ -7,8 +7,10 @@ import { DataService } from '../services/data.service';
   styleUrls: ['./transactionhistory.component.css']
 })
 export class TransactionhistoryComponent implements OnInit {
-
-  constructor(private dataService:DataService,) { }
+  transactions=[];
+  constructor(private dataService:DataService,) { 
+    this.transactions=dataService.getTransactions();
+  }
 
   ngOnInit(): void {
   }

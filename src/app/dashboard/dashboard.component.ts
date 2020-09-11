@@ -12,7 +12,7 @@ export class DashboardComponent implements OnInit {
 
   depositForm = this.fb.group(
     {
-      dpacno:['',[Validators.required]],
+      dpacno:['',[Validators.required, Validators.minLength(4), Validators.pattern("^[0-9]*$")]],
       dppin:['',[Validators.required]],
       dpamt:['',[Validators.required]],
     }
@@ -20,7 +20,7 @@ export class DashboardComponent implements OnInit {
   
   withdrawForm = this.fb.group(
       {
-        wacno:['',[Validators.required]],
+        wacno:['',[Validators.required, Validators.minLength(4), Validators.pattern("^[0-9]*$")]],
         wpin:['',[Validators.required]],
         wamt:['',[Validators.required]],
       }
