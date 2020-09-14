@@ -1,6 +1,7 @@
 <div class="container">
     <div class="jumbotron">
         <h1>Transaction History of {{dataService.currentUser.name}} </h1>
+        <a routerLink="/dashboard">Back to Dashboard</a>
         <div class="row">
             <div class="col" >
                 <table>
@@ -8,12 +9,14 @@
                         <tr>
                             <th>Amount</th>
                             <th>Type</th>
+                            <th>Balance</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr *ngFor="let transaction of transactions">
                             <td>{{transaction.amount}}</td>
                             <td>{{transaction.type}}</td>
+                            <td>{{transaction.balance}}</td>
                         </tr>
                     </tbody>
                 </table>

@@ -89,7 +89,8 @@ export class DataService {
             data[dpacno].balance+= dpamt
             data[dpacno].transactions.push({
               amount:dpamt,
-              type:"Credit"
+              type:"Credit",
+              balance:data[dpacno].balance
             })
 
             // alert('account has been credited')
@@ -133,7 +134,8 @@ export class DataService {
               data[wacno].balance-= wamt
               data[wacno].transactions.push({
                 amount:wamt,
-                type:"Debit"
+                type:"Debit",
+                balance:data[wacno].balance
               })
               this.saveDetails();
               // alert('account has been debited')
