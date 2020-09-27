@@ -32,12 +32,18 @@ export class RegisterComponent implements OnInit {
 
   register(){
     if (this.registerForm.valid) {
-      const result=this.dataService.register(this.registerForm.value.acname, this.registerForm.value.acno, this.registerForm.value.acpin, this.registerForm.value.pwd);
-      // alert(result)
-      if (result){
-        alert("Successfully created account, Please login!!!");
-        this.router.navigateByUrl("");
-      }
+      // const result=this.dataService.register(this.registerForm.value.acname, this.registerForm.value.acno, this.registerForm.value.acpin, this.registerForm.value.pwd);
+      // if (result){
+        // we will .subscribe instead of .then in promise
+        this.dataService.register(this.registerForm.value.acname, this.registerForm.value.acno, this.registerForm.value.acpin, this.registerForm.value.pwd)
+        .subscribe(data=>{
+          if (data){
+            alert("Successfully created account, Please login!!!");
+            this.router.navigateByUrl("");    
+          }
+        },(data)=>{
+          alert(data.error.message)
+        })
     }
     else{
       alert("Validations Failed. Please re-enter form data")

@@ -42,11 +42,12 @@ export class DataService {
   }
 
   register(name, acno, acpin, pwd){
-    if(acno in this.accountDetails){
-      alert("Account already exists, Please login!!!")
-      return false;
-    }
-    this.accountDetails[acno] = {
+    // not required as we will do it thru API
+    // if(acno in this.accountDetails){
+    //   alert("Account already exists, Please login!!!")
+    //   return false;
+    // }
+    const data = {
       name, 
       acno, 
       pin:acpin, 
@@ -54,9 +55,9 @@ export class DataService {
       balance:0,
       transactions:[],
     }
+    return this.http.post("http://localhost:3001/register", data);
     this.saveDetails();
     // console.log("after",this.accountDetails)
-    return true;
   }
 
   login(acno1, pwd){
