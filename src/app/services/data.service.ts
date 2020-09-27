@@ -62,23 +62,28 @@ export class DataService {
 
   login(acno1, pwd){
     var acno = parseInt(acno1)
-    var data=this.accountDetails;
-
-    if (acno in data){
-        var password = data[acno].password
-        if (pwd==password){
-          this.currentUser=data[acno]  
-          this.saveDetails();
-          return true
-        }
-        else{
-            return false
-        }
+    // var data=this.accountDetails;
+    const data={
+      acno,
+      password:pwd
     }
-    else{
-        alert("Account No does not exists")
-        return false
-    }
+    return this.http.post("http://localhost:3001/login",data);
+    this.saveDetails();
+    // if (acno in data){
+    //     var password = data[acno].password
+    //     if (pwd==password){
+    //       this.currentUser=data[acno]  
+    //       this.saveDetails();
+    //       return true
+    //     }
+    //     else{
+    //         return false
+    //     }
+    // }
+    // else{
+    //     alert("Account No does not exists")
+    //     return false
+    // }
   }
 
   deposit(dpacno, dppin, dpamt1){

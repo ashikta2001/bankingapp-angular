@@ -25,10 +25,13 @@ export class DashboardComponent implements OnInit {
         wamt:['',[Validators.required]],
       }
   )
-
+  name="";
   constructor(private router:Router, 
     private dataService:DataService,
-    private fb:FormBuilder) { }
+    private fb:FormBuilder) { 
+
+      this.name= localStorage.getItem("name")
+    }
 
   ngOnInit(): void {
   }
