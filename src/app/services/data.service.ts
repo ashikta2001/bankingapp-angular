@@ -50,8 +50,8 @@ export class DataService {
     const data = {
       name, 
       acno, 
-      pin:acpin, 
-      password:pwd,
+      acpin, 
+      pwd,
       balance:0,
       transactions:[],
     }
@@ -65,7 +65,7 @@ export class DataService {
     // var data=this.accountDetails;
     const data={
       acno,
-      password:pwd
+      pwd
     }
     return this.http.post("http://localhost:3001/login",data);
     this.saveDetails();
