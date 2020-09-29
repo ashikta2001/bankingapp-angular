@@ -45,40 +45,34 @@ export class DashboardComponent implements OnInit {
   }
 
   deposit(){
-    if (this.depositForm.valid) {
-      const result=this.dataService.deposit(this.depositForm.value.dpacno, 
+    this.dataService.deposit(this.depositForm.value.dpacno, 
         this.depositForm.value.dppin, 
-        this.depositForm.value.dpamt);
-      // alert(result)
-      if (result.status == true){
-        alert(result.message + result.balance)
-      }
-      else{
-        alert(result.message)
-      }
-    }
-    else{
-      alert("Incorrect Account Details")
-    }
+        this.depositForm.value.dpamt)
+        .subscribe((result:any)=>{
+          if (result){
+            alert(result.message + result.balance)
+          }
+          else{
+            alert(result.error.message)
+          }
+        },(result)=>{
+            alert(result.error.message)
+        })
   }
 
   withdraw(){
-    if (this.withdrawForm.valid) {
-      const result=this.dataService.withdraw(this.withdrawForm.value.wacno, this.withdrawForm.value.wpin, this.withdrawForm.value.wamt);
-      // alert(result)
-      if (result.status == true){
-        alert(result.message + result.balance)
-      }
-      else{
-        alert(result.message + result.balance)
-      }
-    }
-    else{
-      alert("Incorrect Account Details")
-    }
-
-  }    
-
+    this.dataService.withdraw(this.withdrawForm.value.wacno, this.withdrawForm.value.wpin, this.withdrawForm.value.wamt)
+      .subscribe((result:any)=>{
+        if (result){
+          alert(result.message + result.balance)
+        }
+        else{
+          alert(result.error.message)
+        }
+      },(result)=>{
+          alert(result.error.message)
+      })
+  }
 }
 
 

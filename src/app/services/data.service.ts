@@ -1,6 +1,12 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
+
+const options = {
+  withCredentials: true
+}
+
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,11 +20,11 @@ export class DataService {
     1005:{name:"user5", acno:1005, pin:5678, password:'userfive', balance:5000, transactions:[]},
   }
 
+  currentUser;
+
   constructor( private http:HttpClient) { 
     this.getDetails();
   }
-
-  currentUser;
 
   saveDetails(){
     localStorage.setItem("accountDetails",JSON.stringify(this.accountDetails));
@@ -38,7 +44,12 @@ export class DataService {
   }
 
   getTransactions(){
-    return this.accountDetails[this.currentUser.acno].transactions;
+    // return this.accountDetails[this.currentUser.acno].transactions;
+    return this.http.get("http://localhost:3001/transactions",options)
+  }
+
+  delTransaction(id){
+    return this.http.delete("http://localhost:3001/transactions/"+id,options)
   }
 
   register(name, acno, acpin, pwd){
@@ -67,7 +78,7 @@ export class DataService {
       acno,
       pwd
     }
-    return this.http.post("http://localhost:3001/login",data);
+    return this.http.post("http://localhost:3001/login",data, options);
     this.saveDetails();
     // if (acno in data){
     //     var password = data[acno].password
@@ -87,84 +98,24 @@ export class DataService {
   }
 
   deposit(dpacno, dppin, dpamt1){
-    var dpamt=parseInt(dpamt1)
-    var data=this.accountDetails;
-    
-    if (dpacno in data){
-        var mpin = data[dpacno].pin
-        if (dppin==mpin){
-            data[dpacno].balance+= dpamt
-            data[dpacno].transactions.push({
-              amount:dpamt,
-              type:"Credit",
-              balance:data[dpacno].balance
-            })
-
-            // alert('account has been credited')
-            // alert(data[dpacno].balance)
-            // return data[dpacno].balance
-            this.saveDetails();
-            return{
-              status:true,
-              message:'Account has been credited and Current balance is ',
-              balance:data[dpacno].balance
-            }
-        }
+    const data={
+      dpacno,
+      dppin,
+      dpamt1
     }
-    else{
-        // return false
-        return{
-          status:false,
-          message:'Incorrect Account Details',
-          balance:data[dpacno].balance
-        }
 
-      }        
-
+    return this.http.post("http://localhost:3001/deposit",data, options)
+    this.saveDetails();
   }
 
   withdraw(wacno, wpin, wamt1){
-    var wamt= parseInt(wamt1)
-    var data= this.accountDetails;
-    
-    if (wacno in data){
-        var mpin = data[wacno].pin
-        if (wpin==mpin){
-            if (data[wacno].balance < wamt){
-              return {
-                status :false,
-                message : "Insufficient Balance, available balance is ",
-                balance : data[wacno].balance
-              }
-            }
-            else{
-              data[wacno].balance-= wamt
-              data[wacno].transactions.push({
-                amount:wamt,
-                type:"Debit",
-                balance:data[wacno].balance
-              })
-              this.saveDetails();
-              // alert('account has been debited')
-              // alert(data[wacno].balance)
-              // return data[wacno].balance
-              return{
-                status:true,
-                message:'Account has been Debited and Current balance is ',
-                balance:data[wacno].balance
-              }
-            }
-        }
+    const data = {
+      wacno,
+      wpin,
+      wamt1
     }
-    else{
-        // alert("Incorrect Account Details")
-        return {
-          status : false,
-          message :'Incorrect Account Details'
-        }
-    }        
 
-  }  
-
-
+    return this.http.post("http://localhost:3001/withdraw",data, options)
+    
+  }
 }
