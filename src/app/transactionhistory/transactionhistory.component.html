@@ -5,6 +5,7 @@
         <a routerLink="/dashboard">Back to Dashboard</a>
         <div class="row">
             <div class="col" >
+                <app-delete-confirmation [id] = "id" [amount]="amount" [txnType]="txnType"> </app-delete-confirmation>
                 <table>
                     <thead>
                         <tr>
@@ -19,7 +20,7 @@
                             <td>{{transaction.txnType}}</td>
                             <td>{{transaction.balance}}</td>
                             <!-- <td (click)="delete(transaction)">Delete</td> -->
-                            <td (click)="delete(transaction)"><button class="btn" id="1">Delete</button></td>
+                            <td><button class="btn btn-primary" id="1" (click)="showConfirmationDialog(transaction)">Delete</button></td>
                         </tr>
                     </tbody>
                 </table>
