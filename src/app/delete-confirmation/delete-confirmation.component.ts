@@ -10,6 +10,8 @@ export class DeleteConfirmationComponent implements OnInit {
   @Input() amount:string; 
   @Input() txnType:string;
 
+  // @Output()
+
 
   constructor() { }
 

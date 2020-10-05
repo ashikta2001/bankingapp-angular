@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
@@ -10,6 +11,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { RegisterComponent } from './register/register.component';
 import { TransactionhistoryComponent } from './transactionhistory/transactionhistory.component';
 import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
+import { HighlightDirective } from './directives/highlight.directive';
+import { AnimationDemoComponent } from './animation-demo/animation-demo.component';
 
 
 @NgModule({
@@ -19,10 +22,13 @@ import { DeleteConfirmationComponent } from './delete-confirmation/delete-confir
     DashboardComponent,
     RegisterComponent,
     TransactionhistoryComponent,
-    DeleteConfirmationComponent
+    DeleteConfirmationComponent,
+    HighlightDirective,
+    AnimationDemoComponent
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

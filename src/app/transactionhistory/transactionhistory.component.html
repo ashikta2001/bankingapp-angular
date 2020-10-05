@@ -1,12 +1,13 @@
 <div class="container">
     <div class="jumbotron">
         <!-- <h1>Transaction History of {{dataService.currentUser.name}} </h1> -->
-        <h1>Transaction History of {{name}}</h1>
+        <h1 appHighlight>Transaction History of {{name}}</h1>
+        <app-animation-demo></app-animation-demo>
         <a routerLink="/dashboard">Back to Dashboard</a>
         <div class="row">
             <div class="col" >
                 <app-delete-confirmation [id] = "id" [amount]="amount" [txnType]="txnType"> </app-delete-confirmation>
-                <table>
+                <table >
                     <thead>
                         <tr>
                             <th>Amount</th>
@@ -15,7 +16,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr *ngFor="let transaction of transactions">
+                        <tr [ngClass]="id==transaction._id? 'grey':''" *ngFor="let transaction of transactions">
                             <td>{{transaction.amount}}</td>
                             <td>{{transaction.txnType}}</td>
                             <td>{{transaction.balance}}</td>

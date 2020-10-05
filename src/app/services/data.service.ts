@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 
 const options = {
@@ -45,11 +46,11 @@ export class DataService {
 
   getTransactions(){
     // return this.accountDetails[this.currentUser.acno].transactions;
-    return this.http.get("http://localhost:3001/transactions",options)
+    return this.http.get(environment.apiUrl+"/transactions",options)
   }
 
   delTransaction(id){
-    return this.http.delete("http://localhost:3001/transactions/"+id,options)
+    return this.http.delete(environment.apiUrl+"/transactions/"+id,options)
   }
 
   register(name, acno, acpin, pwd){
@@ -66,7 +67,7 @@ export class DataService {
       balance:0,
       transactions:[],
     }
-    return this.http.post("http://localhost:3001/register", data);
+    return this.http.post(environment.apiUrl+"/register", data);
     this.saveDetails();
     // console.log("after",this.accountDetails)
   }
@@ -78,7 +79,7 @@ export class DataService {
       acno,
       pwd
     }
-    return this.http.post("http://localhost:3001/login",data, options);
+    return this.http.post(environment.apiUrl+"/login",data, options);
     this.saveDetails();
     // if (acno in data){
     //     var password = data[acno].password
@@ -104,7 +105,7 @@ export class DataService {
       dpamt1
     }
 
-    return this.http.post("http://localhost:3001/deposit",data, options)
+    return this.http.post(environment.apiUrl+"/deposit",data, options)
     this.saveDetails();
   }
 
@@ -115,7 +116,7 @@ export class DataService {
       wamt1
     }
 
-    return this.http.post("http://localhost:3001/withdraw",data, options)
+    return this.http.post(environment.apiUrl+"/withdraw",data, options)
     
   }
 }
