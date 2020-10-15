@@ -3,23 +3,34 @@
         <!-- <h1>Transaction History of {{dataService.currentUser.name}} </h1> -->
         <h1 appHighlight>Transaction History of {{name}}</h1>
         <app-animation-demo></app-animation-demo>
+        <br>
         <a routerLink="/dashboard">Back to Dashboard</a>
         <div class="row">
             <div class="col" >
-                <app-delete-confirmation [id] = "id" [amount]="amount" [txnType]="txnType"> </app-delete-confirmation>
+                <!-- to call other components here in html app-delete-confirmation is another component -->
+                <!-- called by passing the parameters to the component -->
+                <app-delete-confirmation (onCancel)="onCancel($event)" (onDelete)="onDelete($event)" [id] = "id" [amount]="amount" [txnType]="txnType"> </app-delete-confirmation>
                 <table >
                     <thead>
                         <tr>
+                            <th>Txn ID</th>
+                            <th></th>
                             <th>Amount</th>
+                            <th></th>
                             <th>Type</th>
+                            <th>   </th>
                             <th>Balance</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr [ngClass]="id==transaction._id? 'grey':''" *ngFor="let transaction of transactions">
-                            <td>{{transaction.amount}}</td>
-                            <td>{{transaction.txnType}}</td>
-                            <td>{{transaction.balance}}</td>
+                            <td>{{transaction._id}}</td>
+                            <td></td>
+                            <td class="align-number">{{transaction.amount | currency :'INR'}}</td>
+                            <td></td>
+                            <td>{{transaction.txnType | uppercase}}</td>
+                            <td></td>
+                            <td class="align-number">{{transaction.balance | currency :'INR'}}</td>
                             <!-- <td (click)="delete(transaction)">Delete</td> -->
                             <td><button class="btn btn-primary" id="1" (click)="showConfirmationDialog(transaction)">Delete</button></td>
                         </tr>

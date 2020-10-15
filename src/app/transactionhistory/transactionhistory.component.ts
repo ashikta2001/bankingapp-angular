@@ -16,6 +16,7 @@ export class TransactionhistoryComponent implements OnInit {
     this.getTransactions();
     this.name= localStorage.getItem("name")
   }
+
   getTransactions(){
     this.dataService.getTransactions()
     .subscribe((data:any)=>
@@ -23,19 +24,30 @@ export class TransactionhistoryComponent implements OnInit {
       this.transactions = data.transactions;
     })
   }
+
   ngOnInit(): void {
   }
 
+  onDelete($event){
+    // alert("Alert from Parent : "+ $event)
+    this.dataService.delTransaction($event)
+    .subscribe((data:any)=>{
+      alert(data.message);
+      this.id="";
+      this.getTransactions();
+    })
+  }
+
+  onCancel($event){
+    this.id="";
+  }
+
   showConfirmationDialog(transaction){
-    console.log(transaction)
+    // console.log(transaction) 
     this.id=transaction._id;
     this.amount=transaction.amount;
     this.txnType=transaction.txnType;
-    // this.dataService.delTransaction(transaction._id)
-    // .subscribe((data:any)=>{
-    //   alert(data.message);
-    //   this.getTransactions();
-    // })
+
   }
 
 }

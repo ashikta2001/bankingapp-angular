@@ -1,6 +1,6 @@
-<div *ngIf="id">
-<p>Are you sure you want to delete this transaction with id : {{id}} and 
-    Amount: {{amount}} and Type: {{txnType}} </p>
-<button>Delete</button>
-<button>Cancel</button>
+<div *ngIf="id" class="delete-confirmation-container">
+<p class="delete-confirmation">Are you sure you want to delete this transaction with id : {{id}} and 
+    Amount: {{amount | currency :'INR'}} and Type: {{txnType}} </p>
+<button class="btn btn-danger" (click)="delete()">Delete</button>
+<button class="btn btn-success" (click)="cancel()">Cancel</button>
 </div>

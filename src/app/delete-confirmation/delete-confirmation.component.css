@@ -1,0 +1,9 @@
+.delete-confirmation{
+    color: red;
+    font-size: 20px;
+}
+
+.delete-confirmation-container{
+    border: 1px solid red;
+    padding: 2px;
+}
