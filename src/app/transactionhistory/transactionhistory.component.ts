@@ -6,7 +6,7 @@ interface Test{
   testFunction();
 }
 
-// Model example
+// Model example used only for type checking
 class Transactions{
   _id: string;
   amount: number;
