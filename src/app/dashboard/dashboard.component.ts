@@ -29,7 +29,6 @@ export class DashboardComponent implements OnInit {
   constructor(private router:Router, 
     private dataService:DataService,
     private fb:FormBuilder) { 
-
       this.name= localStorage.getItem("name")
     }
 
@@ -72,6 +71,10 @@ export class DashboardComponent implements OnInit {
       },(result)=>{
           alert(result.error.message)
       })
+  }
+
+  logout(){
+    this.dataService.logout();
   }
 }
 

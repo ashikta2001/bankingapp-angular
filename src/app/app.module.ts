@@ -13,6 +13,7 @@ import { TransactionhistoryComponent } from './transactionhistory/transactionhis
 import { DeleteConfirmationComponent } from './delete-confirmation/delete-confirmation.component';
 import { HighlightDirective } from './directives/highlight.directive';
 import { AnimationDemoComponent } from './animation-demo/animation-demo.component';
+import { CustomPipe } from './pipes/custom.pipe';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { AnimationDemoComponent } from './animation-demo/animation-demo.componen
     TransactionhistoryComponent,
     DeleteConfirmationComponent,
     HighlightDirective,
-    AnimationDemoComponent
+    AnimationDemoComponent,
+    CustomPipe
   ],
   imports: [
     BrowserModule,

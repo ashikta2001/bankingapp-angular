@@ -98,6 +98,13 @@ export class DataService {
     // }
   }
 
+  logout(){
+    const data={
+      acno:""
+    }
+    return this.http.post(environment.apiUrl+"/logout",data, options);
+  }
+
   deposit(dpacno, dppin, dpamt1){
     const data={
       dpacno,

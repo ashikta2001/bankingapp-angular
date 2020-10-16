@@ -1,6 +1,7 @@
 <div class="container">
     <div class="jumbotron">
         <!-- <h1>Welcome {{dataService.currentUser.name}} </h1> -->
+        <button type="button" class="btn btn-link logout_align" (ngSubmit)="logout()" routerLink="" >Logout</button>
         <h1>Welcome {{name}} </h1>
         <a routerLink="/transactionhistory">View Transaction History</a>
         <div class="row">

@@ -24,7 +24,7 @@
                     </thead>
                     <tbody>
                         <tr [ngClass]="id==transaction._id? 'grey':''" *ngFor="let transaction of transactions">
-                            <td>{{transaction._id}}</td>
+                            <td>{{transaction._id | custom}}</td>
                             <td></td>
                             <td class="align-number">{{transaction.amount | currency :'INR'}}</td>
                             <td></td>
