@@ -1,13 +1,27 @@
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../services/data.service';
 
+// interface example
+interface Test{
+  testFunction();
+}
+
+// Model example
+class Transactions{
+  _id: string;
+  amount: number;
+  txnType: string;
+  balance: number;
+}
+
 @Component({
   selector: 'app-transactionhistory',
   templateUrl: './transactionhistory.component.html',
   styleUrls: ['./transactionhistory.component.css']
 })
-export class TransactionhistoryComponent implements OnInit {
-  transactions=[];
+export class TransactionhistoryComponent implements OnInit, Test {
+  // transactions=[];
+  transactions: Array<Transactions>=[];
   id = "";
   amount ="";
   txnType="";
@@ -17,6 +31,9 @@ export class TransactionhistoryComponent implements OnInit {
     this.name= localStorage.getItem("name")
   }
 
+  testFunction(){
+    alert("test function")
+  }
   getTransactions(){
     this.dataService.getTransactions()
     .subscribe((data:any)=>
